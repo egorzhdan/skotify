@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/main'
+    test.kotlin.srcDirs += 'src/test'
+}
+
+dependencies {
+    compile "com.egorzh.networkinkt:networkinkt-jvm:$networkinkt_version"
+    compile project(":skotify-core")
+    compile project(":skotify-auth")
+
+    testCompile project(":skotify-auth").sourceSets.test.output
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'skotify'
+include 'skotify-core'
+include 'skotify-auth'
+include 'skotify-api'
+
