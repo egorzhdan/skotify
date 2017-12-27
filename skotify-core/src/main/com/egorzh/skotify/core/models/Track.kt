@@ -24,7 +24,7 @@ data class Track(
         @Optional @SerialName("linked_from") val linkedTrack: TrackLink? = null,
         val name: String,
         val popularity: Int,
-        @SerialName("preview_url") val previewURL: String,
+        @Optional @SerialName("preview_url") val previewURL: String? = null,
         @SerialName("track_number") val trackNumber: Int,
         val uri: String
 ) : SpotifyObject
