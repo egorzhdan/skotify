@@ -1,6 +1,7 @@
 package com.egorzh.skotify.api
 
 import kotlinx.serialization.json.JSON
+import org.slf4j.*
 import com.egorzh.networkinkt.*
 import com.egorzh.skotify.auth.Credentials
 
@@ -14,7 +15,9 @@ object Spotify {
             doOutput = true
             setRequestProperty("Authorization", "Bearer ${Credentials.accessToken}")
         }
-        return req.loadText()
+        val resp = req.loadText()
+        LoggerFactory.getLogger(this::class.java).debug("Requested $endpoint, received: $resp")
+        return resp
     }
 
     internal suspend fun get(endpoint: String): String {
