@@ -18,6 +18,7 @@ class TracksTest {
         assert(a.previewURL?.isNotBlank() == true)
         assert(!a.explicit)
         assertEquals("Metallica", a.album.name)
+        assertEquals(3, a.album.images.size)
     }
 
     @Test

@@ -18,7 +18,7 @@ data class Album(
         val genres: List<String>,
         val href: String,
         val id: String,
-        // TODO images
+        val images: List<Image>,
         val label: String,
         val name: String,
         val popularity: Int,

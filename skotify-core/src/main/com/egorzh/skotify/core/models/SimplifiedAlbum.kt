@@ -15,7 +15,7 @@ data class SimplifiedAlbum(
         @SerialName("external_urls") val externalURLs: Map<String, String>,
         val href: String,
         val id: String,
-        // TODO images
+        val images: List<Image>,
         val name: String,
         val uri: String
 ) : SpotifyObject

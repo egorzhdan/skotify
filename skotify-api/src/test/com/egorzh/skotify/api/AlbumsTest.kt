@@ -18,5 +18,6 @@ class AlbumsTest {
         assertEquals("Linkin Park", a.artists[0].name)
         assert(a.copyrights.isNotEmpty())
         assert(a.copyrights.first().text.isNotBlank())
+        assertEquals(3, a.images.size)
     }
 }
