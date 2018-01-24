@@ -30,7 +30,7 @@ object Credentials {
             doOutput = true
             outputStream.writer().use { it.write("grant_type=$grantType") }
         }
-        val resp = req.loadText()
+        val resp = req.getText()
         val parsed = JSON.nonstrict.parse<AccessToken>(resp)
         accessToken = parsed.token
     }

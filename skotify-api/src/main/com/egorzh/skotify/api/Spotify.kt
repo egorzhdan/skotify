@@ -15,7 +15,7 @@ object Spotify {
             doOutput = true
             setRequestProperty("Authorization", "Bearer ${Credentials.accessToken}")
         }
-        val resp = req.loadText()
+        val resp = req.getText()
         LoggerFactory.getLogger(this::class.java).debug("Requested $endpoint, received: $resp")
         return resp
     }
