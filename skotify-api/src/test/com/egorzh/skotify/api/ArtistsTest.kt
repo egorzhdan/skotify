@@ -15,15 +15,17 @@ class ArtistsTest: APITest() {
 
     @Test
     fun topTracks() = runBlocking {
-        val a = Spotify.getTopTracks("0gxyHStUsqpMadRV0Di1Qt")
+        val a = Spotify.getArtist("0gxyHStUsqpMadRV0Di1Qt").getTopTracks()
         assertTrue(a.isNotEmpty())
         assertEquals(a.first().artists.first().name, "Rick Astley")
     }
 
     @Test
-    fun topTracksHelper() = runBlocking {
-        val a = Spotify.getArtist("0gxyHStUsqpMadRV0Di1Qt").getTopTracks()
+    fun albums() = runBlocking {
+        val a = Spotify.getArtist("06HL4z0CvFAxyc27GXpf02").getAlbums()
         assertTrue(a.isNotEmpty())
-        assertEquals(a.first().artists.first().name, "Rick Astley")
+        val names = a.map { it.name }
+        assertTrue(names.contains("reputation"))
+        assertTrue(names.contains("1989"))
     }
 }
