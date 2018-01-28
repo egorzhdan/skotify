@@ -2,15 +2,13 @@ package com.egorzh.skotify.api
 
 import kotlin.test.*
 import kotlinx.coroutines.experimental.runBlocking
-import com.egorzh.skotify.auth.loadSecrets
 
 /**
  * @author Egor Zhdan
  */
-class TracksTest {
+class TracksTest: APITest() {
     @Test
     fun get() = runBlocking {
-        loadSecrets()
         val a = Spotify.getTrack("5BIMPccDwShpXq784RJlJp")
         assertEquals("Enter Sandman", a.name)
         assertEquals(1, a.artists.size)
@@ -23,7 +21,6 @@ class TracksTest {
 
     @Test
     fun getWithoutPreviewURL() = runBlocking {
-        loadSecrets()
         val a = Spotify.getTrack("7i2DJ88J7jQ8K7zqFX2fW8")
         assertEquals("Now Or Never", a.name)
         assertEquals(1, a.artists.size)

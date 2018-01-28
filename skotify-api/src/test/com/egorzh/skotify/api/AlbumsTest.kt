@@ -2,16 +2,13 @@ package com.egorzh.skotify.api
 
 import kotlin.test.*
 import kotlinx.coroutines.experimental.runBlocking
-import com.egorzh.skotify.auth.loadSecrets
-import com.egorzh.skotify.core.models.SimplifiedArtist
 
 /**
  * @author Egor Zhdan
  */
-class AlbumsTest {
+class AlbumsTest: APITest() {
     @Test
     fun get() = runBlocking {
-        loadSecrets()
         val a = Spotify.getAlbum("5Eevxp2BCbWq25ZdiXRwYd")
         assertEquals("One More Light", a.name)
         assertEquals(1, a.artists.size)
