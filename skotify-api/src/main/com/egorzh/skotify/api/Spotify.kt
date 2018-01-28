@@ -25,7 +25,7 @@ object Spotify {
             return unsafeLoadData(endpoint)
         } catch (e: HTTPException) {
             if (e.code == 401 /* Unauthorized */) {
-                println("Access denied, attempting to regenerate token...")
+                LoggerFactory.getLogger(this::class.java).debug("Access denied, attempting to regenerate token...")
                 Credentials.authorize()
                 return unsafeLoadData(endpoint)
             }
@@ -33,6 +33,6 @@ object Spotify {
         }
     }
 
-    internal inline suspend fun <reified T: Any> getAndParse(endpoint: String) =
+    internal suspend inline fun <reified T: Any> getAndParse(endpoint: String) =
             JSON.nonstrict.parse<T>(get(endpoint))
 }
